@@ -16,5 +16,38 @@ c:
     }
 
 
+
+
+**Simple**
+::
+
+    unsigned int reverse(unsigned int x)
+    {
+        unsigned int v;     // input bits to be reversed
+        unsigned int r = v & 1; // r will be reversed bits of v; first get LSB of v
+        int s = sizeof(v) * CHAR_BIT - 1; // extra shift needed at end
+
+        for (v >>= 1; v; v >>= 1)
+        {   
+            r <<= 1;
+            r |= v & 1;
+            s--;
+        }
+        r <<= s; // shift when v's highest bits are zero
+        return r;
+     }
+     
+**Faster** (32-bit processor)
+::
+
+    unsigned char b = x;
+    b = ((b * 0x0802LU & 0x22110LU) | (b * 0x8020LU & 0x88440LU)) * 0x10101LU >> 16; 
+
+**Faster** (64-bit processor)
+::
+
+    unsigned char b; // reverse this (8-bit) byte
+    b = (b * 0x0202020202ULL & 0x010884422010ULL) % 1023;
+
 python:
 +++++++
