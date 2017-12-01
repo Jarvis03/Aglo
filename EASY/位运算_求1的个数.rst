@@ -1,10 +1,13 @@
-int get_num_of_1(int foo)
-{
-    int num = 0;
-    while(foo) {
-         foo &= foo - 1;
-         num++
-    } 
-    return num;
+Q: 求一个32位整数中1的个数
+*********
+::
+    int get_num_of_1(int foo)
+    {
+        int num = 0;
+        while(foo) {
+            foo &= foo - 1;
+            num++
+        } 
+        return num;
     
-}
+    }
