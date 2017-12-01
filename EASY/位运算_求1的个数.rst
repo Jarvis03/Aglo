@@ -1,0 +1,10 @@
+int get_num_of_1(int foo)
+{
+    int num = 0;
+    while(foo) {
+         foo &= foo - 1;
+         num++
+    } 
+    return num;
+    
+}
